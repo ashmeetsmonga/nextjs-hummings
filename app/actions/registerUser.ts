@@ -10,6 +10,5 @@ export const registerUser = async (name: string, email: string, password: string
 		return data;
 	} catch (error: any) {
 		toast.error("Something went wrong", { id: toastID });
-		throw new Error("Something went wrong");
 	}
 };

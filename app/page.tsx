@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Input from "./components/Input";
 import { useLogin } from "./hooks/useLogin";
 
 export default function Home() {
@@ -43,26 +44,25 @@ export default function Home() {
 						</div>
 					</div>
 					<div className='w-full flex flex-col items-center gap-4'>
-						<input
+						<Input
 							type='text'
 							value={username}
 							onChange={(e) => setUsername(e.target.value)}
-							className='w-3/4 p-4 border-2 border-gray-200 rounded-md'
 							placeholder='Username'
 						/>
-						<input
+
+						<Input
 							type='password'
 							value={password}
 							onChange={(e) => setPassword(e.target.value)}
-							className='w-3/4 p-4 border-2 border-gray-200 rounded-md'
 							placeholder='Password'
 						/>
+
 						{signinToggle === "signup" && (
-							<input
+							<Input
 								type='password'
 								value={confirmPassword}
 								onChange={(e) => setConfirmPassword(e.target.value)}
-								className='w-3/4 p-4 border-2 border-gray-200 rounded-md'
 								placeholder='Confirm Password'
 							/>
 						)}

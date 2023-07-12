@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import { loginUser } from "./actions/loginUser";
 import { registerUser } from "./actions/registerUser";
 import Input from "./components/Input";
-import { useLogin } from "./hooks/useLogin";
 
 export default function Home() {
 	const [signinToggle, setSigninToggle] = useState("login");
@@ -13,7 +13,7 @@ export default function Home() {
 	const [confirmPassword, setConfirmPassword] = useState("");
 
 	const handleLogin = async () => {
-		const data = await useLogin(email, password);
+		const data = await loginUser(email, password);
 		console.log(data);
 	};
 

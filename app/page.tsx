@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { registerUser } from "./actions/registerUser";
 import Input from "./components/Input";
 import { useLogin } from "./hooks/useLogin";
 
@@ -14,6 +15,11 @@ export default function Home() {
 	const handleLogin = async () => {
 		const data = await useLogin(email, password);
 		console.log(data);
+	};
+
+	const handleRegister = async () => {
+		const user = await registerUser(name, email, password);
+		console.log(user);
 	};
 
 	return (
@@ -85,7 +91,10 @@ export default function Home() {
 							</button>
 						)}
 						{signinToggle === "signup" && (
-							<button className='rounded border border-purple-800 px-4 py-2 text-purple-800 text-xl'>
+							<button
+								onClick={handleRegister}
+								className='rounded border border-purple-800 px-4 py-2 text-purple-800 text-xl'
+							>
 								Signup
 							</button>
 						)}

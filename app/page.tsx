@@ -17,7 +17,7 @@ export default function Home() {
 	};
 
 	return (
-		<main className='flex min-h-screen w-screen'>
+		<main className='flex h-screen w-screen'>
 			<div className='w-full bg-purple-800'></div>
 			<div className='w-full'>
 				<div className='w-full h-full p-24 flex flex-col items-center justify-center gap-8'>

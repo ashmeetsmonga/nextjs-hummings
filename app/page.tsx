@@ -6,12 +6,13 @@ import { useLogin } from "./hooks/useLogin";
 
 export default function Home() {
 	const [signinToggle, setSigninToggle] = useState("login");
-	const [username, setUsername] = useState("");
+	const [email, setEmail] = useState("");
+	const [name, setName] = useState("");
 	const [password, setPassword] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
 
 	const handleLogin = async () => {
-		const data = await useLogin(username, password);
+		const data = await useLogin(email, password);
 		console.log(data);
 	};
 
@@ -44,11 +45,20 @@ export default function Home() {
 						</div>
 					</div>
 					<div className='w-full flex flex-col items-center gap-4'>
+						{signinToggle === "signup" && (
+							<Input
+								type='text'
+								value={name}
+								onChange={(e) => setName(e.target.value)}
+								placeholder='Name'
+							/>
+						)}
+
 						<Input
 							type='text'
-							value={username}
-							onChange={(e) => setUsername(e.target.value)}
-							placeholder='Username'
+							value={email}
+							onChange={(e) => setEmail(e.target.value)}
+							placeholder='Email'
 						/>
 
 						<Input

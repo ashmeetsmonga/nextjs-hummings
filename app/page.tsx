@@ -79,13 +79,13 @@ export default function Home() {
 						{signinToggle === "login" && (
 							<button
 								onClick={handleLogin}
-								className='rounded border border-purple-800 px-4 py-2 text-purple-800 text-xl uppercase'
+								className='rounded border border-purple-800 px-4 py-2 text-purple-800 text-xl'
 							>
 								Login
 							</button>
 						)}
 						{signinToggle === "signup" && (
-							<button className='rounded border border-purple-800 px-4 py-2 text-purple-800 text-xl uppercase'>
+							<button className='rounded border border-purple-800 px-4 py-2 text-purple-800 text-xl'>
 								Signup
 							</button>
 						)}

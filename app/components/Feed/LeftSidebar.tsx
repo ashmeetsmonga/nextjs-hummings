@@ -7,7 +7,7 @@ import { CgMoreO } from "react-icons/cg";
 
 const LeftSidebar = () => {
 	return (
-		<div className='w-full flex flex-col items-start py-5'>
+		<div className='w-full flex flex-col items-start py-5 sticky top-0'>
 			<div className='px-4 mb-4'>
 				<BsTwitter className='text-purple-800' size={30} />
 			</div>

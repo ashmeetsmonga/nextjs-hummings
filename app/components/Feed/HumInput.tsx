@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { RxAvatar } from "react-icons/rx";
 
-const TweetInput = () => {
+const HumInput = () => {
 	const [hum, setHum] = useState("");
 
 	return (
@@ -29,4 +29,4 @@ const TweetInput = () => {
 	);
 };
 
-export default TweetInput;
+export default HumInput;

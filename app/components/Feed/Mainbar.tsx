@@ -1,10 +1,10 @@
 import React from "react";
-import TweetInput from "./TweetInput";
+import HumInput from "./HumInput";
 
 const Mainbar = () => {
 	return (
 		<div className='w-full min-h-screen border-l border-r border-l-purple-200'>
-			<TweetInput />
+			<HumInput />
 		</div>
 	);
 };

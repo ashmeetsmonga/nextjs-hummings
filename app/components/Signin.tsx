@@ -2,9 +2,10 @@
 
 import React from "react";
 import { useState } from "react";
-import { loginUser } from "../actions/loginUser";
+import { signIn } from "next-auth/react";
 import { registerUser } from "../actions/registerUser";
 import Input from "./Input";
+import { toast } from "react-hot-toast";
 
 const Signin = () => {
 	const [signinToggle, setSigninToggle] = useState("login");
@@ -14,8 +15,9 @@ const Signin = () => {
 	const [confirmPassword, setConfirmPassword] = useState("");
 
 	const handleLogin = async () => {
-		const data = await loginUser(email, password);
-		console.log(data);
+		const toastID = toast.loading("Logging in");
+		await signIn("credentials", { email, password, redirect: false });
+		toast.success("Logged in successfully", { id: toastID });
 	};
 
 	const handleRegister = async () => {

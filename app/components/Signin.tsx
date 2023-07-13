@@ -33,26 +33,6 @@ const Signin = () => {
 					<h1 className='text-6xl text-center font-extrabold text-purple-800'>
 						Connect With Everyone
 					</h1>
-					<div className='flex flex-col w-full items-center'>
-						<div className='flex gap-4'>
-							<button
-								onClick={() => setSigninToggle("login")}
-								className={`px-4 py-2 text-lg rounded ${
-									signinToggle === "login" ? "bg-purple-800 text-white" : ""
-								}`}
-							>
-								Login
-							</button>
-							<button
-								onClick={() => setSigninToggle("signup")}
-								className={`px-4 py-2 text-lg rounded ${
-									signinToggle === "signup" ? "bg-purple-800 text-white" : ""
-								}`}
-							>
-								Signup
-							</button>
-						</div>
-					</div>
 					<div className='w-full flex flex-col items-center gap-4'>
 						{signinToggle === "signup" && (
 							<Input
@@ -86,20 +66,30 @@ const Signin = () => {
 							/>
 						)}
 						{signinToggle === "login" && (
-							<button
-								onClick={handleLogin}
-								className='rounded border border-purple-800 px-4 py-2 text-purple-800 text-xl'
-							>
-								Login
-							</button>
+							<div className='flex flex-col items-center gap-2'>
+								<button
+									onClick={handleLogin}
+									className='rounded-full bg-purple-800 px-10 py-2 text-white text-xl'
+								>
+									Login
+								</button>
+								<p onClick={() => setSigninToggle("signup")} className='underline cursor-pointer'>
+									Do not have an account? Sign Up
+								</p>
+							</div>
 						)}
 						{signinToggle === "signup" && (
-							<button
-								onClick={handleRegister}
-								className='rounded border border-purple-800 px-4 py-2 text-purple-800 text-xl'
-							>
-								Signup
-							</button>
+							<div className='flex flex-col items-center gap-2'>
+								<button
+									onClick={handleRegister}
+									className='rounded-full bg-purple-800 px-10 py-2 text-white text-xl'
+								>
+									Signup
+								</button>
+								<p onClick={() => setSigninToggle("login")} className='underline cursor-pointer'>
+									Already have an account? Log In
+								</p>
+							</div>
 						)}
 					</div>
 				</div>

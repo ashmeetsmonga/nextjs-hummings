@@ -16,13 +16,13 @@ const Signin = () => {
 
 	const handleLogin = async () => {
 		const toastID = toast.loading("Logging in");
-		await signIn("credentials", { email, password, redirect: false });
+		await signIn("credentials", { email, password, callbackUrl: "/feed" });
 		toast.success("Logged in successfully", { id: toastID });
 	};
 
 	const handleRegister = async () => {
 		const user = await registerUser(name, email, password);
-		console.log(user);
+		await signIn("credentials", { email, password, callbackUrl: "/feed" });
 	};
 
 	return (
@@ -66,7 +66,7 @@ const Signin = () => {
 							/>
 						)}
 						{signinToggle === "login" && (
-							<div className='flex flex-col items-center gap-2'>
+							<div className='flex flex-col items-center gap-2 mt-4'>
 								<button
 									onClick={handleLogin}
 									className='rounded-full bg-purple-800 px-10 py-2 text-white text-xl'
@@ -79,7 +79,7 @@ const Signin = () => {
 							</div>
 						)}
 						{signinToggle === "signup" && (
-							<div className='flex flex-col items-center gap-2'>
+							<div className='flex flex-col items-center gap-2 mt-4'>
 								<button
 									onClick={handleRegister}
 									className='rounded-full bg-purple-800 px-10 py-2 text-white text-xl'

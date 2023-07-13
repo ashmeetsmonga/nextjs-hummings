@@ -16,7 +16,7 @@ const HumInput = () => {
 					value={hum}
 					onChange={(e) => setHum(e.target.value.substring(0, 200))}
 					placeholder="What's happening?!"
-					className='w-full px-4 py-3 text-xl border-b border-purple-200 focus:outline-purple-800'
+					className='w-full px-4 py-3 text-xl border-b border-purple-200 focus:outline-none'
 				/>
 			</div>
 			<button

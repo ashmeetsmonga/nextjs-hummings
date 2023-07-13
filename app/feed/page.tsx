@@ -12,13 +12,13 @@ const Feed = async () => {
 
 	return (
 		<div className='flex justify-center'>
-			<div className='w-1/4 max-w-[300px] outline'>
+			<div className='w-1/4 max-w-[300px]'>
 				<LeftSidebar />
 			</div>
-			<div className='w-2/4 max-w-[600px] outline'>
+			<div className='w-2/4 max-w-[600px]'>
 				<Mainbar />
 			</div>
-			<div className='w-1/4 max-w-[300px] outline'>
+			<div className='w-1/4 max-w-[300px]'>
 				<RightSidebar />
 			</div>
 		</div>

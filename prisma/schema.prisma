@@ -21,8 +21,9 @@ model User {
 }
 
 model Hum {
-  id        String @id @default(auto()) @map("_id") @db.ObjectId
-  createdBy String @db.ObjectId
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  createdBy String   @db.ObjectId
+  createdAt DateTime @default(now())
   content   String
-  user      User   @relation(fields: [createdBy], references: [id])
+  user      User     @relation(fields: [createdBy], references: [id])
 }

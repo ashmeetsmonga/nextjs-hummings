@@ -15,9 +15,11 @@ const Feed = async () => {
 			<div className='w-1/4 max-w-[275px]'>
 				<LeftSidebar />
 			</div>
+			{/* <React.Suspense fallback={<div>Loading...</div>}> */}
 			<div className='w-2/4 max-w-[650px]'>
 				<Mainbar />
 			</div>
+			{/* </React.Suspense> */}
 			<div className='w-1/4 max-w-[275px]'>
 				<RightSidebar />
 			</div>

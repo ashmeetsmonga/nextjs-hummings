@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import Hum from "./Hum";
 import HumInput from "./HumInput";
 

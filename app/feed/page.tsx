@@ -5,11 +5,13 @@ import { redirect } from "next/navigation";
 import LeftSidebar from "./components/LeftSidebar";
 import Mainbar from "./components/Mainbar";
 import RightSidebar from "./components/RightSidebar";
+import { getHums } from "../actions/getHums";
 
 const Feed = async () => {
 	const session = await getServerSession(authOptions);
 	if (!session) redirect("/");
 
+	const hums = await getHums();
 	return (
 		<div className='flex justify-center'>
 			<div className='w-1/4 max-w-[275px]'>
@@ -17,7 +19,7 @@ const Feed = async () => {
 			</div>
 			{/* <React.Suspense fallback={<div>Loading...</div>}> */}
 			<div className='w-2/4 max-w-[650px]'>
-				<Mainbar />
+				<Mainbar hums={hums} />
 			</div>
 			{/* </React.Suspense> */}
 			<div className='w-1/4 max-w-[275px]'>

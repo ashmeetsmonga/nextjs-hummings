@@ -14,3 +14,12 @@ export async function POST(req: Request) {
 		return NextResponse.json({ message: "Error in humming" }, { status: 403 });
 	}
 }
+
+export async function GET(request: Request) {
+	try {
+		const data = await prisma.hum.findMany();
+		return NextResponse.json(data);
+	} catch (e: any) {
+		return NextResponse.json({ message: "Error in humming" }, { status: 403 });
+	}
+}

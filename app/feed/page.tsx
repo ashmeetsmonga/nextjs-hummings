@@ -2,13 +2,12 @@ import { getServerSession } from "next-auth";
 import React from "react";
 import { authOptions } from "../api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
-import LeftSidebar from "../components/Feed/LeftSidebar";
-import RightSidebar from "../components/Feed/RightSidebar";
-import Mainbar from "../components/Feed/Mainbar";
+import LeftSidebar from "./components/LeftSidebar";
+import Mainbar from "./components/Mainbar";
+import RightSidebar from "./components/RightSidebar";
 
 const Feed = async () => {
 	const session = await getServerSession(authOptions);
-	console.log(session);
 	if (!session) redirect("/");
 
 	return (

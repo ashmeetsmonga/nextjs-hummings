@@ -21,8 +21,12 @@ const Signin = () => {
 	};
 
 	const handleRegister = async () => {
-		const user = await registerUser(name, email, password);
-		await signIn("credentials", { email, password, callbackUrl: "/feed" });
+		try {
+			const user = await registerUser(name, email, password);
+			await signIn("credentials", { email, password, callbackUrl: "/feed" });
+		} catch {
+			toast.error("Something went wrong");
+		}
 	};
 
 	return (

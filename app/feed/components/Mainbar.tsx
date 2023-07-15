@@ -3,7 +3,7 @@ import Hum from "./Hum";
 import HumInput from "./HumInput";
 
 interface MainbarProps {
-	hums: any;
+	hums: Hum[] | null;
 }
 
 const Mainbar: FC<MainbarProps> = ({ hums }) => {
@@ -11,13 +11,9 @@ const Mainbar: FC<MainbarProps> = ({ hums }) => {
 	return (
 		<div className='w-full min-h-screen border-l border-r border-l-purple-200'>
 			<HumInput />
-			<Hum />
-			<Hum />
-			<Hum />
-			<Hum />
-			<Hum />
-			<Hum />
-			<Hum />
+			{hums?.map((hum, idx) => (
+				<Hum key={idx} hum={hum} />
+			))}
 		</div>
 	);
 };

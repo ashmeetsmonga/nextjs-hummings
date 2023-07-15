@@ -7,6 +7,7 @@ interface Hum {
 	id: string;
 	createdBy: string;
 	content: string;
+	likesCount: number;
 	user: {
 		name: string | null;
 		email: string | null;

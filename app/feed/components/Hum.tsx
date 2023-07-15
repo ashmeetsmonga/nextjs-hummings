@@ -44,7 +44,7 @@ const Hum: FC<HumProps> = ({ hum }) => {
 								size={40}
 								className='hover:bg-red-200 px-2 py-1 rounded-full cursor-pointer transition'
 							/>
-							<p className='transition group-hover:text-red-500'>1232</p>
+							<p className='transition group-hover:text-red-500'>{hum.likesCount}</p>
 						</div>
 						<div className='flex items-center group gap-0.5'>
 							<AiOutlineBarChart

@@ -30,12 +30,25 @@ export const authOptions: AuthOptions = {
 			},
 		}),
 	],
+
 	pages: {
 		signIn: "/",
 	},
 	debug: process.env.NODE_ENV === "development",
 	session: {
 		strategy: "jwt",
+	},
+	callbacks: {
+		jwt: async ({ token, user }) => {
+			console.log("Ashmeet user", user, token);
+			if (user) token.uid = user.id;
+			return token;
+		},
+		session: async ({ session, token }) => {
+			console.log("Ashmeet", token);
+			if (session?.user) session.user.id = token.uid;
+			return session;
+		},
 	},
 	secret: process.env.NEXTAUTH_SECRET,
 };

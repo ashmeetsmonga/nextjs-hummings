@@ -17,4 +17,12 @@ model User {
   hashedPassword String?
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
+  hums           Hum[]
+}
+
+model Hum {
+  id        String @id @default(auto()) @map("_id") @db.ObjectId
+  createdBy String @db.ObjectId
+  content   String
+  user      User   @relation(fields: [createdBy], references: [id])
 }

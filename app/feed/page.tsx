@@ -8,6 +8,7 @@ import Mainbar from "../components/Feed/Mainbar";
 
 const Feed = async () => {
 	const session = await getServerSession(authOptions);
+	console.log(session);
 	if (!session) redirect("/");
 
 	return (

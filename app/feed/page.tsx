@@ -6,22 +6,21 @@ import LeftSidebar from "./components/LeftSidebar";
 import Mainbar from "./components/Mainbar";
 import RightSidebar from "./components/RightSidebar";
 import { getHums } from "../actions/getHums";
+import { ClientHum } from "@/types";
 
 const Feed = async () => {
 	const session = await getServerSession(authOptions);
 	if (!session) redirect("/");
 
-	const hums = await getHums();
+	const hums: ClientHum[] = await getHums();
 	return (
 		<div className='flex justify-center'>
 			<div className='w-1/4 max-w-[275px]'>
 				<LeftSidebar />
 			</div>
-			{/* <React.Suspense fallback={<div>Loading...</div>}> */}
 			<div className='w-2/4 max-w-[650px]'>
 				<Mainbar hums={hums} />
 			</div>
-			{/* </React.Suspense> */}
 			<div className='w-1/4 max-w-[275px]'>
 				<RightSidebar />
 			</div>

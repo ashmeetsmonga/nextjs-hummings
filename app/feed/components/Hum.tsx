@@ -7,9 +7,10 @@ import {
 	AiOutlineHeart,
 	AiOutlineBarChart,
 } from "react-icons/ai";
+import { ClientHum } from "@/types";
 
 interface HumProps {
-	hum: Hum;
+	hum: ClientHum;
 }
 
 const Hum: FC<HumProps> = ({ hum }) => {
@@ -23,7 +24,7 @@ const Hum: FC<HumProps> = ({ hum }) => {
 						<MdVerified className='text-purple-800' size={20} />
 						<p>{hum.user.email}</p>
 					</div>
-					<div className='mt-1'>{hum.content}</div>
+					<div className='mt-1'>{hum.body}</div>
 					<div className='w-4/5 flex justify-between mt-2'>
 						<div className='flex items-center group gap-0.5'>
 							<AiOutlineMessage
@@ -44,7 +45,7 @@ const Hum: FC<HumProps> = ({ hum }) => {
 								size={40}
 								className='hover:bg-red-200 px-2 py-1 rounded-full cursor-pointer transition'
 							/>
-							<p className='transition group-hover:text-red-500'>{hum.likes.length}</p>
+							<p className='transition group-hover:text-red-500'>{hum.likedIds.length}</p>
 						</div>
 						<div className='flex items-center group gap-0.5'>
 							<AiOutlineBarChart

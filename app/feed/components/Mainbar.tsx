@@ -1,9 +1,10 @@
+import { ClientHum } from "@/types";
 import React, { FC } from "react";
 import Hum from "./Hum";
 import HumInput from "./HumInput";
 
 interface MainbarProps {
-	hums: Hum[] | null;
+	hums: ClientHum[];
 }
 
 const Mainbar: FC<MainbarProps> = ({ hums }) => {

@@ -15,7 +15,6 @@ export async function POST(req: Request) {
 	const hashedPassword = bcrypt.hashSync(password, salt);
 	try {
 		const user = await prisma.user.create({ data: { name, email, hashedPassword } });
-		await prisma.like.create({ data: { userId: user.id, likedHums: [] } });
 		return NextResponse.json(user);
 	} catch (e: any) {
 		console.log(e);

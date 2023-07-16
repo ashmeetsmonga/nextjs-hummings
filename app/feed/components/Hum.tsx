@@ -1,19 +1,35 @@
-import React, { FC } from "react";
+"use client";
+
+import React, { FC, useEffect, useState } from "react";
 import { RxAvatar } from "react-icons/rx";
 import { MdVerified } from "react-icons/md";
 import {
 	AiOutlineMessage,
 	AiOutlineRetweet,
 	AiOutlineHeart,
+	AiFillHeart,
 	AiOutlineBarChart,
 } from "react-icons/ai";
 import { ClientHum } from "@/types";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 
 interface HumProps {
 	hum: ClientHum;
 }
 
 const Hum: FC<HumProps> = ({ hum }) => {
+	const [isLiked, setIsLiked] = useState(false);
+	const router = useRouter();
+	useEffect(() => {
+		axios.get(`/api/like?id=${hum.id}`).then((data: any) => setIsLiked(data.data.isLiked));
+	}, [isLiked]);
+
+	const handleLike = () => {
+		if (isLiked) return;
+		axios.post(`/api/like?id=${hum.id}`, {}).then(() => router.refresh());
+	};
+
 	return (
 		<div className='w-full border-b border-purple-200 p-4 pt-5'>
 			<div className='flex gap-2'>
@@ -40,11 +56,18 @@ const Hum: FC<HumProps> = ({ hum }) => {
 							/>
 							<p className='transition group-hover:text-green-500'>196</p>
 						</div>
-						<div className='flex items-center group gap-0.5'>
-							<AiOutlineHeart
-								size={40}
-								className='hover:bg-red-200 px-2 py-1 rounded-full cursor-pointer transition'
-							/>
+						<div onClick={handleLike} className='flex items-center group gap-0.5'>
+							{isLiked ? (
+								<AiFillHeart
+									size={40}
+									className={`hover:bg-red-200 text-red-500 px-2 py-1 rounded-full cursor-pointer transition`}
+								/>
+							) : (
+								<AiOutlineHeart
+									size={40}
+									className={`hover:bg-red-200 px-2 py-1 rounded-full cursor-pointer transition`}
+								/>
+							)}
 							<p className='transition group-hover:text-red-500'>{hum.likedIds.length}</p>
 						</div>
 						<div className='flex items-center group gap-0.5'>

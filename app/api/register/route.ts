@@ -14,7 +14,8 @@ export async function POST(req: Request) {
 	const salt = bcrypt.genSaltSync(10);
 	const hashedPassword = bcrypt.hashSync(password, salt);
 	try {
-		const user = await prisma.user.create({ data: { name, email, hashedPassword } });
+		const username = email.split("@")[0];
+		const user = await prisma.user.create({ data: { name, username, email, hashedPassword } });
 		return NextResponse.json(user);
 	} catch (e: any) {
 		console.log(e);

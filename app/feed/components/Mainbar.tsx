@@ -12,8 +12,8 @@ const Mainbar: FC<MainbarProps> = ({ hums }) => {
 	return (
 		<div className='w-full min-h-screen border-l border-r border-l-purple-200'>
 			<HumInput />
-			{hums?.map((hum, idx) => (
-				<Hum key={idx} hum={hum} />
+			{hums?.map((hum) => (
+				<Hum key={hum.id} hum={hum} />
 			))}
 		</div>
 	);

@@ -13,6 +13,7 @@ import {
 import { ClientHum } from "@/types";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { toast } from "react-hot-toast";
 
 interface HumProps {
 	hum: ClientHum;
@@ -22,12 +23,36 @@ const Hum: FC<HumProps> = ({ hum }) => {
 	const [isLiked, setIsLiked] = useState(false);
 	const router = useRouter();
 	useEffect(() => {
-		axios.get(`/api/like?id=${hum.id}`).then((data: any) => setIsLiked(data.data.isLiked));
-	}, [isLiked]);
+		axios.get(`/api/like?id=${hum.id}`).then((data: any) => {
+			setIsLiked(data.data.isLiked);
+		});
+	}, []);
 
 	const handleLike = () => {
 		if (isLiked) return;
-		axios.post(`/api/like?id=${hum.id}`, {}).then(() => router.refresh());
+		const toastID = toast.loading("Liking hum");
+		axios
+			.post(`/api/like?id=${hum.id}`, {})
+			.then(() => {
+				toast.success("Hum liked", { id: toastID });
+
+				setIsLiked((prev) => !prev);
+				router.refresh();
+			})
+			.catch(() => toast.error("Something went wrong", { id: toastID }));
+	};
+
+	const handleDislike = () => {
+		if (!isLiked) return;
+		const toastID = toast.loading("Disliking hum");
+		axios
+			.post(`/api/dislike?id=${hum.id}`, {})
+			.then(() => {
+				toast.success("Hum disliked", { id: toastID });
+				setIsLiked((prev) => !prev);
+				router.refresh();
+			})
+			.catch(() => toast.error("Something went wrong", { id: toastID }));
 	};
 
 	return (
@@ -56,14 +81,16 @@ const Hum: FC<HumProps> = ({ hum }) => {
 							/>
 							<p className='transition group-hover:text-green-500'>196</p>
 						</div>
-						<div onClick={handleLike} className='flex items-center group gap-0.5'>
+						<div className='flex items-center group gap-0.5'>
 							{isLiked ? (
 								<AiFillHeart
+									onClick={handleDislike}
 									size={40}
 									className={`hover:bg-red-200 text-red-500 px-2 py-1 rounded-full cursor-pointer transition`}
 								/>
 							) : (
 								<AiOutlineHeart
+									onClick={handleLike}
 									size={40}
 									className={`hover:bg-red-200 px-2 py-1 rounded-full cursor-pointer transition`}
 								/>
